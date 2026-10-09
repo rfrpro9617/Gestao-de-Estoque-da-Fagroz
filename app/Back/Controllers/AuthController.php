@@ -16,10 +16,10 @@ final class AuthController extends Controller
 
   public function index(): void
   {
-    // If the user is already authenticated, redirect to the home page
+    // If the user is already authenticated, redirect to the stock dashboard.
     // Controll do not know how authentication works, so it uses the Auth class to check if the user is authenticated
     if (Auth::check()) {
-      header('Location: ' . BASE_URL . '/inicio');
+      header('Location: ' . BASE_URL . '/estoque');
       exit;
     }
     $this->view('auth/login', ['title' => 'Entrar | ' . APP_NAME], 'auth');
@@ -41,7 +41,7 @@ final class AuthController extends Controller
 
     Auth::login($user);
 
-    header('Location: ' . BASE_URL . '/inicio');
+    header('Location: ' . BASE_URL . '/estoque');
     exit;
   }
 

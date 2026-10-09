@@ -4,7 +4,7 @@ use Core\Router;
 use Core\AuthGuard;
 
 use App\Back\Controllers\AuthController;
-use App\Back\Controllers\HomeController;
+use App\Back\Controllers\StockController;
 
 $router = new Router();
 
@@ -20,8 +20,14 @@ $router->post(
 );
 
 $router->get(
-  '/inicio',
-  [HomeController::class, 'index'],
+  '/estoque',
+  [StockController::class, 'index'],
+  [AuthGuard::class]
+);
+
+$router->get(
+  '/estoque/{section}',
+  [StockController::class, 'index'],
   [AuthGuard::class]
 );
 

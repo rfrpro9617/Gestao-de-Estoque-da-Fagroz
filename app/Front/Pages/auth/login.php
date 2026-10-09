@@ -11,8 +11,8 @@
       </div>
 
       <div>
-        <span class="text-xs font-bold tracking-[0.14em] text-[#c5d29e]">AMBIENTE DE TRABALHO</span>
-        <h1 class="mt-4 font-['Manrope'] text-4xl font-bold leading-tight">Seu trabalho,<br>em um só lugar.</h1>
+        <span class="text-xs font-bold tracking-[0.14em] text-[#c5d29e]">GESTÃO DE ESTOQUE DA FAGROZ</span>
+        <h1 class="mt-4 font-['Manrope'] text-4xl font-bold leading-tight">Insumos da FAGROZ,<br>sempre sob controle.</h1>
         <p class="mt-4 max-w-xs text-sm leading-7 text-[#d0dbd0]">Acesse sua conta para continuar no sistema.</p>
       </div>
 

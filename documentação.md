@@ -56,3 +56,5 @@ Podemos salvar informações do banco em variáveis estáticas e usar para compa
 # Por que devemos verificar se o id do usuário da sessão é elegível?
 
 Pois o id do usuário salvo na sessão, pode não ser mais elegível no banco de dados, pois foi deletado.
+
+# Componente Shell
