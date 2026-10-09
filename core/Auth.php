@@ -68,9 +68,15 @@ final class Auth
 
   public static function logout(): void
   {
-    unset($_SESSION['auth']);
-
     self::$user = null;
     self::$userResolved = false;
+
+    $_SESSION = [];
+
+    if (session_status() === PHP_SESSION_ACTIVE && !session_regenerate_id(true)) {
+      throw new \RuntimeException(
+        'Não foi possível invalidar a sessão após o logout.'
+      );
+    }
   }
 }
