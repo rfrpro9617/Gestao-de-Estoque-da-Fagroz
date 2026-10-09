@@ -28,6 +28,7 @@ final class Database
 
     foreach (['host', 'database', 'username'] as $key) {
       if (empty($config[$key])) {
+        // TODO: validar como a interface trata a ausência de uma configuração de banco de dados.
         throw new \RuntimeException("Configuração do banco ausente: {$key}");
       }
     }

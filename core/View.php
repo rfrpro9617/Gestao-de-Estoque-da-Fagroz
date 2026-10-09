@@ -4,6 +4,9 @@ namespace Core;
 
 final class View
 {
+  // view: page to be rendered
+  // data: array of data to be passed to the view
+  // layout: layout to be used for show errors
   public static function render(string $view, array $data = [], string $layout = 'app'): void
   {
     extract($data, EXTR_SKIP);

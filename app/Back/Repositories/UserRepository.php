@@ -18,17 +18,17 @@ final class UserRepository implements UserProvider
   {
     $stmt = Database::connection()->prepare(
       'SELECT
-      chavePrimaria,
-      NomeUsu,
-      UserName,
-      SenhaUsu,
-      EmailUsu
-     FROM programa
-     WHERE chavePrimaria = :id
-       AND UserName <> \'0\'
-       AND SenhaUsu <> \'0\'
-       AND VinculoUsu IN (\'Funcionário\', \'Professor\')
-     LIMIT 1'
+        chavePrimaria,
+        NomeUsu,
+        UserName,
+        SenhaUsu,
+        EmailUsu
+      FROM programa
+      WHERE chavePrimaria = :id
+        AND UserName <> \'0\'
+        AND SenhaUsu <> \'0\'
+        AND VinculoUsu IN (\'Funcionário\', \'Professor\')
+      LIMIT 1'
     );
 
     $stmt->execute(['id' => $id]);

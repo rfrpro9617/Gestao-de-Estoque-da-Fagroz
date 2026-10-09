@@ -2,13 +2,17 @@
 
 namespace App\Back\Controllers;
 
+use App\Back\Validators\AuthValidator;
 use App\Back\Services\AuthService;
 use Core\Auth;
 use Core\Controller;
 
 final class AuthController extends Controller
 {
-  public function __construct(private AuthService $service = new AuthService()) {}
+  public function __construct(
+    private AuthService $service = new AuthService(),
+    private AuthValidator $validator = new AuthValidator()
+  ) {}
 
   public function index(): void
   {
@@ -23,16 +27,13 @@ final class AuthController extends Controller
 
   public function login(): void
   {
-    // Check if the email has a valid format
-    $email = filter_var(trim($_POST['email'] ?? ''), FILTER_VALIDATE_EMAIL);
-    $password = $_POST['password'] ?? '';
-
-    if ($email === false || !is_string($password) || $password === '') {
+    $credentials = $this->validator->validateLogin($_POST);
+    if ($credentials === null) {
       $this->showLoginError();
       return;
     }
 
-    $user = $this->service->authenticate($email, $password);
+    $user = $this->service->authenticate($credentials['email'], $credentials['password']);
     if ($user === null) {
       $this->showLoginError();
       return;
@@ -55,7 +56,7 @@ final class AuthController extends Controller
   private function showLoginError(): void
   {
     $this->view(
-      'auth/login',
+      'auth/login', 
       [
         'title' => 'Entrar | ' . APP_NAME,
         'feedback' => 'E-mail ou senha inválidos. Confira seus dados e tente novamente.',

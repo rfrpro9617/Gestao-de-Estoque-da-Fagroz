@@ -96,27 +96,4 @@ document.addEventListener('DOMContentLoaded', () => {
 		}).render(usersGrid);
 	}
 
-	document.querySelectorAll('[data-start-tour]').forEach((button) => {
-		button.addEventListener('click', () => {
-			if (!window.introJs) return;
-
-			const steps = [
-				['[data-tour="brand"]', 'Acesse o início do sistema por aqui.'],
-				['[data-tour="home-link"]', 'Abra o painel inicial.'],
-				['[data-tour="attendance-link"]', 'Consulte os atendimentos e seus indicadores.'],
-				['[data-tour="users-link"]', 'Pesquise e consulte os usuários.'],
-				['[data-tour="content"]', 'O conteúdo da área selecionada aparece nesta região.'],
-			]
-				.map(([element, intro]) => ({ element: document.querySelector(element), intro }))
-				.filter((step) => step.element);
-
-			introJs().setOptions({
-				steps,
-				nextLabel: 'Próximo',
-				prevLabel: 'Anterior',
-				doneLabel: 'Concluir',
-				showProgress: true,
-			}).start();
-		});
-	});
 });
